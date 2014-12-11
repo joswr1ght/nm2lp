@@ -1,0 +1,12 @@
+nm2lp uses libpcap and the Wireshark wiretap libraries.  On Ubuntu systems, 
+you'll need to install the libpcap-dev and libwiretap-dev packages:
+
+```
+$ sudo apt-get install libwiretap-dev libpcap-dev
+```
+
+After installing the library requirements, simply run "make" to build the
+nm2lp executable.  Run "make install" to copy it to /usr/local/bin.
+
+-Josh
+jwright@willhackforsushi.com
