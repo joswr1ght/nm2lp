@@ -37,7 +37,15 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
+/*
+   Wireshark 1.12 changed the wiretap API. Check for WTAP_TYPE_AUTO to test
+   for API 1.12 and later, else handle the earlier API.
+*/
+#ifdef WTAP_TYPE_AUTO
+	wtap = wtap_open_offline(argv[1], WTAP_TYPE_AUTO, &err, &err_info, FALSE);
+#else
 	wtap = wtap_open_offline(argv[1], &err, &err_info, FALSE);
+#endif
 	if (wtap == NULL) {
 		fprintf(stderr, "Cannot open NetMon packet capture file \"%s\" (error %d)\n", argv[1], err);
 		if (err_info != NULL) {
