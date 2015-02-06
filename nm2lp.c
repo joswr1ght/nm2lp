@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, Joshua Wright <jwright@willhackforsushi.com>
+ * Copyright (c) 2015, Joshua Wright <jwright@willhackforsushi.com>
  *
  * $Id: $
  *
@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 	const uint8_t *packet_data;
 
 	printf("nm2lp: Convert NetMon Wireless Packet Captures to Libpcap Format (v1.1)\n");
-	printf("Copyright (c) 2014 Joshua Wright <jwright@willhackforsushi.com>\n");
+	printf("Copyright (c) 2015 Joshua Wright <jwright@willhackforsushi.com>\n");
 	if (argc < 3) {
 		fprintf(stderr, "Usage: nm2lp <infile.cap> <outfile.pcap>\n");
 		return 1;

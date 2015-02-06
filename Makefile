@@ -8,7 +8,7 @@
 # <dragorn> make is a twisted beast
 ##################################
 LDLIBS		= -lpcap
-CFLAGS		= -pipe -Wall -I/usr/include/wireshark/wiretap
+CFLAGS		= -pipe -Wall -I/usr/include/wireshark/wiretap -I/usr/include/wireshark
 CFLAGS		+= -g3 -ggdb
 #CFLAGS		+= -O2
 CFLAGS		+=$(shell pkg-config --cflags glib-2.0 gtk+-2.0)
