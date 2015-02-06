@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 	const struct wtap_pkthdr *packet_header;
 	const uint8_t *packet_data;
 
-	printf("nm2lp: Convert NetMon Wireless Packet Captures to Libpcap Format (v1.1)\n");
+	printf("nm2lp: Convert NetMon Wireless Packet Captures to Libpcap Format (v1.2)\n");
 	printf("Copyright (c) 2015 Joshua Wright <jwright@willhackforsushi.com>\n");
 	if (argc < 3) {
 		fprintf(stderr, "Usage: nm2lp <infile.cap> <outfile.pcap>\n");
