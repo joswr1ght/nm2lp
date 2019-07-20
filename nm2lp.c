@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, Joshua Wright <jwright@willhackforsushi.com>
+ * Copyright (c) 2015, Joshua Wright <jwright@willhackforsushi.com>
  *
  * $Id: $
  *
@@ -30,14 +30,22 @@ int main(int argc, char **argv) {
 	const struct wtap_pkthdr *packet_header;
 	const uint8_t *packet_data;
 
-	printf("nm2lp: Convert NetMon Wireless Packet Captures to Libpcap Format (v1.1)\n");
-	printf("Copyright (c) 2014 Joshua Wright <jwright@willhackforsushi.com>\n");
+	printf("nm2lp: Convert NetMon Wireless Packet Captures to Libpcap Format (v1.2)\n");
+	printf("Copyright (c) 2015 Joshua Wright <jwright@willhackforsushi.com>\n");
 	if (argc < 3) {
 		fprintf(stderr, "Usage: nm2lp <infile.cap> <outfile.pcap>\n");
 		return 1;
 	}
 
+/*
+   Wireshark 1.12 changed the wiretap API. Check for WTAP_TYPE_AUTO to test
+   for API 1.12 and later, else handle the earlier API.
+*/
+#ifdef WTAP_TYPE_AUTO
+	wtap = wtap_open_offline(argv[1], WTAP_TYPE_AUTO, &err, &err_info, FALSE);
+#else
 	wtap = wtap_open_offline(argv[1], &err, &err_info, FALSE);
+#endif
 	if (wtap == NULL) {
 		fprintf(stderr, "Cannot open NetMon packet capture file \"%s\" (error %d)\n", argv[1], err);
 		if (err_info != NULL) {
